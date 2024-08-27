@@ -1,0 +1,293 @@
+* {
+    position: sticky;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+}
+
+body {
+    background-color: #1A0A0E;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.bg {
+    position: absolute;
+    z-index: -1;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+}
+
+@font-face {
+    font-family: 'fthv';
+    src: url("./FONTES/futura\ medium\ bt.ttf");
+}
+
+@font-face {
+    font-family: 'ftlt';
+    src: url("./FONTES/Futura\ Book\ font.ttf");
+}
+
+@font-face {
+    font-family: 'inhv';
+    src: url("./FONTES/Inter-Medium.ttf");
+}
+
+@font-face {
+    font-family: 'inlt';
+    src: url("./FONTES/Inter-Regular.ttf");
+}
+
+
+nav {
+    justify-content: center;
+    margin: 20px;
+    align-items: center;
+    font-family: 'ftlt';
+    font-size: larger;
+}
+
+nav * {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: x-large;
+    font-family: 'fthv';
+}
+
+.logo img {
+    margin-right: 0px;
+}
+
+input {
+    border: none;
+    border-radius: 3px;
+    height: 20px;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.infos h2 {
+    font-size: 30px;
+    font-family: "fthv";
+    margin-top: 10px;
+}
+
+.infos p {
+    font-family: "inlt";
+}
+
+.notacritica, .notauser {
+    position: absolute;
+    top: 15vh;
+    font-size: 6vw;
+    font-family: "fthv";
+    text-align: center;
+    transform: translateY(0%);
+}
+
+.notacritica {
+    left: 20%;
+}
+
+.notauser {
+    right: 19%;
+}
+
+.notacritica p, .notauser p {
+    font-size: 1.5vw;
+    font-family: "inlt";
+    margin-top: -10px;
+}
+
+@media (max-width: 768px) {
+    .notacritica, .notauser {
+        font-size: 10vw;
+    }
+
+    .notacritica p, .notauser p {
+        font-size: 2.5vw;
+    }
+
+    .notacritica {
+        left: 10%;
+    }
+
+    .notauser {
+        right: 10%;
+    }
+}
+
+ul {
+    position: absolute;
+    top: 44vh;
+    font-size: 1.3vw;
+    font-family: "inlt";
+    left: 21%;
+}
+
+ul h3{
+    font-family: "fthv";
+    font-size: 2vw;
+    transform: translateX(-15%);
+    padding-bottom: 10px;
+}
+
+ul li{
+margin-bottom: 4px;
+}
+
+aside{
+    position: absolute;
+    top: 44vh;
+    font-size: 1.3vw;
+    font-family: "inlt";
+    right: 18.5%;
+    width: 14vw;
+}
+
+aside h3{
+    font-family: "fthv";
+    font-size: 2vw;
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+aside p {
+    text-align: justify;
+    margin-bottom: 48px;
+}
+
+.inserirnota{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    margin-top: 4vh;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 1.3vw;
+    font-family: "inlt";
+}
+
+.inserirnota input{
+    height: 10vw;
+    width: 20vw;
+    color: #1A0A0E;
+    text-align: center;
+    font-size: 5vw;
+    font-family: "fthv";
+    border-radius: 4px 4px 0 0;
+}
+
+#notaDisplay{
+    position: absolute;
+    height: 10vw;
+    width: 20vw;
+    color: #1A0A0E;
+    text-align: center;
+    font-size: 5vw;
+    font-family: "fthv";
+    border-radius: 4px 4px 0 0;
+    background-color: white;
+    transform: translate(-50%);
+    align-content: center;
+}
+
+
+.inserirnota button{
+    position: fixed;
+    width: 20vw;
+    text-align: center;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    font-family: 'inlt';
+    font-size: 23px;
+    font-weight: normal;
+    background: orangered;
+    background: linear-gradient(90deg, orangered 0%, fuchsia 100%);
+    cursor: pointer;
+    height: 5vw;
+    top: 100%;
+}
+
+.play{
+    background-color: rgba(255, 255, 255, 0.286);
+    font-family: 'inlt';
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: background-color 0.4s;
+}
+
+.playicon{
+    width: 20px;
+    margin-right: 6px;
+    height: auto;
+}
+
+.play:hover{
+    background-color: #a0a0a09b;
+}
+
+
+#pessoal {
+    position: absolute;
+    display: none;
+    top: 0; 
+    right: 0;
+    padding: 20px; 
+    margin-top: 5vw;
+    margin-right: 20vw;
+    background-color: rgb(33, 33, 33);
+    border-radius: 5px;
+    font-family: 'inhv';
+}
+
+#pessoal.active {
+    display: block;
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#voltar, #logout {
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    width: 130px;
+    font-family: 'inhv';
+    font-size: 23px;
+    font-weight: normal;
+    background: orangered;
+    background: linear-gradient(90deg, orangered 0%, fuchsia 100%);
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+
+#voltar:hover, #logout:hover {
+    background: rgb(193, 76, 33);
+    background: linear-gradient(90deg, rgb(193, 76, 33) 0%, rgb(177, 48, 177) 100%);
+}
