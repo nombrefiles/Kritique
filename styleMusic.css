@@ -237,7 +237,10 @@ aside p {
     background: linear-gradient(90deg, orangered 0%, fuchsia 100%);
     cursor: pointer;
     height: 5vw;
-    top: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
 }
 
 .play{
@@ -287,6 +290,7 @@ aside p {
     align-items: center;
     flex-direction: column;
 }
+
 #voltar, #logout {
     border: none;
     border-radius: 4px;

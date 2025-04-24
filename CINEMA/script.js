@@ -1,85 +1,50 @@
-let a = [
-    {
-        title: 'Before Sunrise',
-        director: 'Richard Linklater',
-        link: "../BEFORE SUNRISE/index.html"
-    },
-    {
-        title: "La La Land",
-        director: 'Damien Chazelle',
-        link: "../LALALAND/index.html"
-    },
-    {
-        title: 'Mamma Mia',
-        director: 'Phyllida Loyd',
-        link: "../MAMMA MIA/index.html"
-    }
-];
-
-var usuarioLogado = localStorage.getItem('loggedUser');
-
-if (usuarioLogado) {
-    usuarioLogado = JSON.parse(usuarioLogado);
-} else {
-    alert('volta pro login');
-    window.location.href = "../SIGNIN/index.html"; // Redireciona para a página de login se não houver usuário logado
-}
-
-let input = document.querySelector('input');
+let input = document.querySelector('form');
 let result = document.querySelector('.result');
+let pessoal = document.querySelector('#pessoal');
+let profile = document.querySelector('.profile');
+let msg = document.querySelector('#msg');
+let voltar = document.querySelector('#voltar');
+let logout = document.querySelector('#logout');
 
-
-for (e of a) {
-    result.innerHTML += `<span> <a href="${e.link}"> ${e.title} - ${e.director} </a></span><br><br>`;
+async function logado() {
+    let data = await fetch('../LOGIN/session.php').then(res => res.json());
+    if (data.status === "error") {
+        location.href = "../LOGIN/index.html";
+    }
 }
+logado();
 
+input.addEventListener('input', async (e) => {
+    e.preventDefault();
 
-input.addEventListener('input', () => {
-    let searchTerm = input.value.trim().toLowerCase();
-
-    if (searchTerm === '') {
+    let pesquisa = e.target.value.trim();
+    if (pesquisa === "") {
         result.innerHTML = "";
-        for (e of a) {
-            result.innerHTML += `<span> <a href="${e.link}"> ${e.title} - ${e.director} </a></span><br><br>`;
-        }
         return;
     }
 
-    result.innerHTML = "";
-    let encontrados = a.filter(e => e.title.toLowerCase().includes(searchTerm));
+    try {
+        let params = new URLSearchParams({ pesquisa });
+        let url = `back.php?${params.toString()}`;
+        let response = await fetch(url);
+        let data = await response.json();
 
-    if (encontrados.length > 0) {
-        for (let e of encontrados) {
-            result.innerHTML += `<span> <a href="${e.link}"> ${e.title} - ${e.director} </a></span><br><br>`;
+        console.log("Dados recebidos:", data);
+        result.innerHTML = "";
+
+        if (data.resultado && data.resultado.length > 0) {
+            for (let item of data.resultado) {
+                result.innerHTML += `<span><a href="${item.link}">${item.nome} - ${item.diretor}</a></span><br><br>`;
+            }
+        } else {
+            result.innerHTML = "Nada encontrado, tente novamente.";
         }
-    } else {
-        result.innerHTML = "Nada encontrado, tente novamente";
+    } catch (err) {
+        console.error("Erro ao buscar dados:", err);
+        result.innerHTML = "Ocorreu um erro ao realizar a busca.";
     }
 });
-
-// LOGOUT 
-var pessoal = document.querySelector('#pessoal');
-var profile = document.querySelector('#profile');
-var buran = document.querySelector('#logout');
-var msg = document.querySelector('#msg');
-var voltar = document.querySelector('#voltar');
-
 profile.addEventListener('click', () => {
-    pessoal.classList.add('active');
-    msg.innerHTML = `Bem vindo/a, ${usuarioLogado.user}!`;
-});
-
-voltar.addEventListener('click', () => {
-    pessoal.classList.remove('active');
-});
-
-buran.addEventListener('click', () => {
-    if (localStorage.getItem('loggedUser')) {
-        // Correção: Remover a chave correta 'loggedUser'
-        localStorage.removeItem('loggedUser');
-        console.log('Usuário deslogado com sucesso.');
-    } else {
-        console.log('Nenhum usuário logado.');
-    }
-    window.location.href = "../SIGNIN/index.html";
+    fetch('../LOGIN/logout.php');
+    location.href = '../LOGIN/index.html';
 });

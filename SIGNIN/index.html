@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" async></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
         <main>
             <h1>Criar conta</h1>
-            <article>
-                <input id="user" type="text" placeholder="username" name="">
+            <form name="box">
+                <input id="user" type="text" placeholder="username" name="user">
                 <p></p>
-                <input id="email" type="email" placeholder="e-mail">
+                <input id="email" type="email" placeholder="e-mail" name="email">
                 <p></p>
-                <input id="pass" type="text" placeholder="senha">
+                <input id="pass" type="text" placeholder="senha" name="senha">
                 <p></p>
-                <input id="confirm" type="text" placeholder="confirmar senha">
+                <input id="confirm" type="text" placeholder="confirmar senha" name="confirma">
                 <p></p>
-            </article>
-                <p class="info"></p>
+                <p id="info"></p>
                 <button>CADASTRAR-SE</button>
+            </form>
                 <p>Já tem uma conta?<a href="../LOGIN/index.html">Entrar</a></p>
         </main>
         <br>
